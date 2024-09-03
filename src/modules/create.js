@@ -1,18 +1,8 @@
-// export const createContainer = () => {
-//   const container = document.createElement('div');
-//   container.classList.add('app-container');
-//   return container;
-// };
+
 
 const container = document.querySelector('.app-container');
-container.style.cssText = `
-height: 100vh;
-width: 100%;
-display: flex;
-align-items: center;
-justify-content: center;
-flex-direction: column;
-`
+container.classList.add('vh-100', 'w-100', 'd-flex', 'align-items-center', 'justify-content-center', 'flex-column')
+
 
 export const createTitle = () => {
   const h3 = document.createElement('h3');
@@ -44,7 +34,7 @@ export const createButtonsGroup = params => {
 
 export const createForm = () => {
   const form = document.createElement('form');
-  form.classList.add('d-flex');
+  form.classList.add('d-flex', 'align-items-center', 'mb-3');
   form.insertAdjacentHTML('beforeend', `
     <label class="form-group me-3 mb-0">
         <input type="text" class="form-control" placeholder="ввести задачу">
@@ -128,5 +118,7 @@ export const createTable = () => {
       table.append(thead, tbody);
       tableWrapper.append(table);
 
-      return table;
+      return tableWrapper;
+
+    
 };
