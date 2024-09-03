@@ -4,6 +4,16 @@
 //   return container;
 // };
 
+const container = document.querySelector('.app-container');
+container.style.cssText = `
+height: 100vh;
+width: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+`
+
 export const createTitle = () => {
   const h3 = document.createElement('h3');
   h3.textContent = 'Todo App';
@@ -43,13 +53,13 @@ export const createForm = () => {
 
     const buttonGroup = createButtonsGroup([
       {
-        classname: 'btn btn-primary me-3',
+        className: 'btn btn-primary me-3',
         type: 'submit', 
         text:  'Сохранить',
       
       },
       {
-        classname: 'btn btn-warning',
+        className: 'btn btn-warning',
         type: 'reset', 
         text:  'Очистить',
       },
@@ -118,8 +128,5 @@ export const createTable = () => {
       table.append(thead, tbody);
       tableWrapper.append(table);
 
-      return {
-        tableWrapper,
-        table,
-      };
+      return table;
 };
