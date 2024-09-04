@@ -1,7 +1,12 @@
 
 
 const container = document.querySelector('.app-container');
-container.classList.add('vh-100', 'w-100', 'd-flex', 'align-items-center', 'justify-content-center', 'flex-column')
+container.classList.add('vh-100',
+    'w-100',
+    'd-flex',
+    'align-items-center',
+    'justify-content-center',
+    'flex-column');
 
 
 export const createTitle = () => {
@@ -41,26 +46,24 @@ export const createForm = () => {
       </label>
     `);
 
-    const buttonGroup = createButtonsGroup([
-      {
-        className: 'btn btn-primary me-3',
-        type: 'submit', 
-        text:  'Сохранить',
-      
-      },
-      {
-        className: 'btn btn-warning',
-        type: 'reset', 
-        text:  'Очистить',
-      },
-    ]);
+  const buttonGroup = createButtonsGroup([
+    {
+      className: 'btn btn-primary me-3',
+      type: 'submit',
+      text: 'Сохранить',
 
-    form.append(...buttonGroup.btns);
+    },
+    {
+      className: 'btn btn-warning',
+      type: 'reset',
+      text: 'Очистить',
+    },
+  ]);
 
-
-    return form;
+  form.append(...buttonGroup.btns);
 
 
+  return form;
 };
 
 export const createTable = () => {
@@ -80,8 +83,8 @@ export const createTable = () => {
           </tr>
     `);
 
-    const tbody = document.createElement('tbody');
-    tbody.insertAdjacentHTML('beforeend', `
+  const tbody = document.createElement('tbody');
+  tbody.insertAdjacentHTML('beforeend', `
       <tr class="table-light">
             <td>1</td>
             <td class="task">
@@ -115,10 +118,8 @@ export const createTable = () => {
           </tr>
       `);
 
-      table.append(thead, tbody);
-      tableWrapper.append(table);
+  table.append(thead, tbody);
+  tableWrapper.append(table);
 
-      return tableWrapper;
-
-    
+  return tableWrapper;
 };
