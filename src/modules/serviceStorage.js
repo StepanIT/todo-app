@@ -1,8 +1,13 @@
+const getUserKey = () => localStorage.getItem('username') || 'defaultUser';
+
 export const saveTasksToStorage = (tasks) => {
-  localStorage.setItem('tasks', JSON.stringify(tasks));
+  const userKey = getUserKey();
+  localStorage.setItem(`tasks_${userKey}`, JSON.stringify(tasks));
 };
 
 export const getTasksFromStorage = () => {
-  const tasks = localStorage.getItem('tasks');
+  const userKey = getUserKey();
+  const tasks = localStorage.getItem(`tasks_${userKey}`);
   return tasks ? JSON.parse(tasks) : [];
 };
+
