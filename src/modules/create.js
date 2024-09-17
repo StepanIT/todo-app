@@ -123,6 +123,9 @@ export const createTable = () => {
               <button class="btn btn-success">
                 Завершить
               </button>
+              <button class="btn btn-edit">
+                Редактировать
+              </button>
             </td>
           </tr>
 
@@ -138,6 +141,9 @@ export const createTable = () => {
               </button>
               <button class="btn btn-success">
                 Завершить
+              </button>
+              <button class="btn btn-edit">
+                Редактировать
               </button>
             </td>
           </tr>
