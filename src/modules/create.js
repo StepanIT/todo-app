@@ -43,10 +43,17 @@ export const createForm = () => {
 
   form.insertAdjacentHTML('beforeend', `
     <label class="form-group me-3 mb-0">
-        <input type="text" class="form-control"
-        placeholder="ввести задачу" name="task">
-      </label>
-    `);
+      <input type="text" class="form-control"
+      placeholder="ввести задачу" name="task">
+    </label>
+    <label class="form-group me-3 mb-0">
+      <select class="form-control" name="priority">
+        <option value="Обычная">Обычная</option>
+        <option value="Важная">Важная</option>
+        <option value="Срочная">Срочная</option>
+      </select>
+    </label>
+  `);
 
   const buttonGroup = createButtonsGroup([
     {
@@ -54,7 +61,6 @@ export const createForm = () => {
       type: 'submit',
       disabled: 'disabled',
       text: 'Сохранить',
-
     },
     {
       className: 'btn btn-warning',
@@ -63,16 +69,12 @@ export const createForm = () => {
     },
   ]);
 
-
   const [saveButton] = buttonGroup.btns;
   saveButton.disabled = true;
 
-
   form.append(...buttonGroup.btns);
 
-
   const input = form.querySelector('input[name="task"]');
-
 
   const updateSaveButtonState = () => {
     if (input.value.trim() === '') {
@@ -83,7 +85,6 @@ export const createForm = () => {
   };
 
   input.addEventListener('input', updateSaveButtonState);
-
   form.addEventListener('reset', () => {
     setTimeout(updateSaveButtonState, 0);
   });
@@ -104,7 +105,7 @@ export const createTable = () => {
             <th>№</th>
             <th>Задача</th>
             <th>Статус</th>
-            <th>Действия</th>
+            <th>Важность</th>
           </tr>
     `);
 

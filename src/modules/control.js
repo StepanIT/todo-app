@@ -4,18 +4,25 @@ export const initControls = (form, table) => {
   const tbody = table.querySelector('tbody');
   const tasks = getTasksFromStorage();
 
+
   const renderTasks = () => {
     tbody.innerHTML = '';
     tasks.forEach((task, index) => {
       const newRow = document.createElement('tr');
-      newRow.classList.add(task.status === 'Выполнена' ?
-        'table-success' : 'table-light');
+
+      newRow.classList.add(
+        task.status === 'Выполнена' ? 'table-success' :
+        task.priority === 'Срочная' ? 'table-danger' :
+        task.priority === 'Важная' ? 'table-warning' :
+        'table-light',
+      );
       newRow.innerHTML = `
         <td>${index + 1}</td>
         <td class="task ${task.status === 'Выполнена' ?
         'text-decoration-line-through' : ''}"
         contenteditable="false">${task.text}</td>
         <td>${task.status}</td>
+        <td>${task.priority}</td>
         <td>
           <button class="btn btn-danger">Удалить</button>
           <button class="btn btn-success">Завершить</button>
@@ -33,11 +40,14 @@ export const initControls = (form, table) => {
 
     const input = form.querySelector('input[name="task"]');
     const taskText = input.value.trim();
+    const select = form.querySelector('select[name="priority"]');
+    const priority = select.value;
 
     if (taskText) {
       const newTask = {
         text: taskText,
         status: 'В процессе',
+        priority,
       };
 
       tasks.push(newTask);
@@ -47,7 +57,6 @@ export const initControls = (form, table) => {
       form.reset();
     }
   });
-
 
   tbody.addEventListener('click', (e) => {
     const target = e.target;
@@ -84,6 +93,7 @@ export const initControls = (form, table) => {
       }
     }
   });
+
   tbody.addEventListener('blur', (e) => {
     const target = e.target;
     if (target.classList.contains('task') && target.isContentEditable) {
