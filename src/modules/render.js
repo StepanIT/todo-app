@@ -13,9 +13,6 @@ export const renderTodo = (app) => {
     const input = form.querySelector('input[name="task"]');
     const taskText = input.value.trim();
 
-    if (taskText === '') return;
-
-
     const newRow = document.createElement('tr');
     newRow.classList.add('table-light');
 

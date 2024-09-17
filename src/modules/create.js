@@ -52,6 +52,7 @@ export const createForm = () => {
     {
       className: 'btn btn-primary me-3',
       type: 'submit',
+      disabled: 'disabled',
       text: 'Сохранить',
 
     },
@@ -62,8 +63,30 @@ export const createForm = () => {
     },
   ]);
 
+
+  const [saveButton] = buttonGroup.btns;
+  saveButton.disabled = true;
+
+
   form.append(...buttonGroup.btns);
 
+
+  const input = form.querySelector('input[name="task"]');
+
+
+  const updateSaveButtonState = () => {
+    if (input.value.trim() === '') {
+      saveButton.disabled = true;
+    } else {
+      saveButton.disabled = false;
+    }
+  };
+
+  input.addEventListener('input', updateSaveButtonState);
+
+  form.addEventListener('reset', () => {
+    setTimeout(updateSaveButtonState, 0);
+  });
 
   return form;
 };
