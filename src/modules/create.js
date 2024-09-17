@@ -40,9 +40,11 @@ export const createButtonsGroup = params => {
 export const createForm = () => {
   const form = document.createElement('form');
   form.classList.add('d-flex', 'align-items-center', 'mb-3');
+
   form.insertAdjacentHTML('beforeend', `
     <label class="form-group me-3 mb-0">
-        <input type="text" class="form-control" placeholder="ввести задачу">
+        <input type="text" class="form-control"
+        placeholder="ввести задачу" name="task">
       </label>
     `);
 
