@@ -51,9 +51,13 @@ export const initControls = (form, table) => {
     const index = Array.from(tbody.children).indexOf(row);
 
     if (target.classList.contains('btn-danger')) {
-      tasks.splice(index, 1);
-      saveTasksToStorage(tasks);
-      renderTasks();
+      const question = confirm('вы уверены что хотите удалить задачу?');
+      if (question) {
+        tasks.splice(index, 1);
+        saveTasksToStorage(tasks);
+        renderTasks();
+      }
+      return;
     }
 
     if (target.classList.contains('btn-success')) {
